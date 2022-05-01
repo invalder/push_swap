@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/04/30 15:28:09 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/01 15:58:49 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ INCS = -Iincludes/ -I$(LIB_DIR)includes/
 NAME = push_swap
 SRCS = push_swap.c
 OBJS = $(SRCS:.c=.o)
+RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
+RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
 
 all: $(NAME)
 
@@ -45,4 +47,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test100:
+	./push_swap $(RNDS100)
+
+test500:
+	./push_swap $(RNDS500)
+
+.PHONY: all clean fclean re push_swap

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/04/30 10:25:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/01 17:31:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 {
 	t_node	*bottom;
 	t_node	*top;
+	int		stack_cnt;
 }	t_stack;
 
 #endif
