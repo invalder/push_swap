@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/01 15:58:49 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/02 09:15:05 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIB_DIR = libft/
 
 INCS = -Iincludes/ -I$(LIB_DIR)includes/
 NAME = push_swap
-SRCS = push_swap.c
+SRCS = push_swap.c \
+	push_swap_stack_utils1.c
 OBJS = $(SRCS:.c=.o)
 RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
 RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
@@ -29,7 +30,7 @@ all: $(NAME)
 
 $(NAME):	$(addprefix $(OBJ_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
-		$(CC) $(addprefix $(OBJ_DIR),push_swap.o) -o push_swap -L $(LIB_DIR) -lft
+		$(CC) $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
@@ -48,9 +49,9 @@ fclean: clean
 re: fclean all
 
 test100:
-	./push_swap $(RNDS100)
+	@./push_swap $(RNDS100)
 
 test500:
-	./push_swap $(RNDS500)
+	@./push_swap $(RNDS500)
 
 .PHONY: all clean fclean re push_swap

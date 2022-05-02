@@ -6,21 +6,22 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/01 17:40:00 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:18:50 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int		ft_arr_range(char **arr);
-t_stack	*ft_create_stack(void);
-void	ft_cleanup_stacks(t_stack *stack_a, t_stack *stack_b);
+t_stack	*ft_stack_create(void);
+void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b);
 void	ft_clear_nodes(t_node *node);
 void	ft_free_split(char **str_arr, int len);
 int		ft_stack_push(t_stack *stk, int content);
 t_node	*ft_stack_pop(t_stack *stk);
-void	ft_print_stack(t_stack *stk);
+void	ft_stack_print(t_stack *stk);
 int		ft_stack_appendlast(t_stack *stk, int content);
+void	ft_stack_print_all(t_stack *stk_a, t_stack *stk_b);
 
 int	main(int argc, char **argv)
 {
@@ -33,12 +34,12 @@ int	main(int argc, char **argv)
 	arr_len = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	stack_a = ft_create_stack();
+	stack_a = ft_stack_create();
 	if (!stack_a)
-		ft_cleanup_stacks(stack_a, stack_b);
-	stack_b = ft_create_stack();
+		ft_stacks_cleanup(stack_a, stack_b);
+	stack_b = ft_stack_create();
 	if (!stack_b)
-		ft_cleanup_stacks(stack_a, stack_b);
+		ft_stacks_cleanup(stack_a, stack_b);
 	if (argc < 2)
 	{
 		ft_printf("./push_swap args...\n");
@@ -65,83 +66,10 @@ int	main(int argc, char **argv)
 			ft_stack_appendlast(stack_a, ft_atoi(argv[arr_len]));
 		}
 	}
-	ft_print_stack(stack_a);
-	printf("stack cnt, a: %d, b: %d\n", stack_a->stack_cnt, stack_b->stack_cnt);
-	ft_cleanup_stacks(stack_a, stack_b);
-}
-
-int	ft_arr_range(char **arr)
-{
-	int	len;
-
-	len = 0;
-	while (*arr)
-	{
-		len++;
-		arr++;
-	}
-	return (len);
-}
-
-t_stack	*ft_create_stack(void)
-{
-	t_stack	*create_stack;
-
-	create_stack = NULL;
-	create_stack = (t_stack *)malloc(sizeof(t_stack) * 1);
-	if (!create_stack)
-		return (NULL);
-	create_stack->bottom = NULL;
-	create_stack->top = NULL;
-	create_stack->stack_cnt = 0;
-	return (create_stack);
-}
-
-void	ft_cleanup_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a)
-	{
-		stack_a->top = NULL;
-		ft_clear_nodes(stack_a->bottom);
-		stack_a->stack_cnt = 0;
-		free(stack_a);
-	}
-	if (stack_b)
-	{
-		stack_b->top = NULL;
-		ft_clear_nodes(stack_b->bottom);
-		stack_b->stack_cnt = 0;
-		free(stack_b);
-	}
-}
-
-void	ft_clear_nodes(t_node *node)
-{
-	t_node	*p_node;
-	t_node	*tmp_node;
-
-	p_node = node;
-	while (p_node)
-	{
-		tmp_node = p_node->next;
-		p_node->content = 0;
-		p_node->prev = NULL;
-		p_node->next = NULL;
-		free(p_node);
-		p_node = tmp_node;
-	}
-}
-
-void	ft_free_split(char **str_arr, int len)
-{
-	int	cnt;
-
-	cnt = 0;
-	while (cnt <= len)
-	{
-		free(str_arr[cnt++]);
-	}
-	free(str_arr);
+	// ft_stack_print(stack_a);
+	// printf("stack cnt, a: %d, b: %d\n", stack_a->stack_cnt, stack_b->stack_cnt);
+	ft_stack_print_all(stack_a, stack_b);
+	ft_stacks_cleanup(stack_a, stack_b);
 }
 
 int	ft_stack_push(t_stack *stk, int content)
@@ -209,7 +137,7 @@ t_node	*ft_stack_pop(t_stack *stk)
 	return NULL;
 }
 
-void	ft_print_stack(t_stack *stk)
+void	ft_stack_print(t_stack *stk)
 {
 	t_node	*ptr_node;
 
@@ -222,4 +150,44 @@ void	ft_print_stack(t_stack *stk)
 			ptr_node = ptr_node->prev;
 		}
 	}
+}
+
+void	ft_stack_print_all(t_stack *stk_a, t_stack *stk_b)
+{
+	int		stack_max;
+	t_node	*ptr_node_a;
+	t_node	*ptr_node_b;
+
+	stack_max = 0;
+	ptr_node_a = stk_a->top;
+	ptr_node_b = stk_b->top;
+	if (stk_a->stack_cnt > stk_b->stack_cnt)
+		stack_max = stk_a->stack_cnt;
+	else
+		stack_max = stk_b->stack_cnt;
+	while (stack_max > 0)
+	{
+		if (stk_a)
+		{
+			if (stk_a->stack_cnt >= stack_max)
+			{
+				ft_printf("|\t%03d\t|\t\t", ptr_node_a->content);
+				ptr_node_a = ptr_node_a->prev;
+			}
+			else
+				ft_printf("|\t\t|\t\t");
+		}
+		if (stk_b)
+		{
+			if (stk_b->stack_cnt >= stack_max)
+			{
+				ft_printf("%03d|\n", ptr_node_b->content);
+				ptr_node_b = ptr_node_b->prev;
+			}
+			else
+				ft_printf("|\n");
+		}
+		stack_max--;
+	}
+	ft_printf("_________________________________\n");
 }
