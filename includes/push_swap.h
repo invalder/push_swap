@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/02 09:11:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/06 15:24:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		ft_stack_push(t_stack *stk, int content);
 int		ft_stack_appendlast(t_stack *stk, int content);
 void	ft_stack_print_all(t_stack *stk_a, t_stack *stk_b);
 void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b);
+int		*ft_radix_sort_main(char **arr);
 
 #endif

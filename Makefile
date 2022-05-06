@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/02 09:15:05 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/06 19:48:54 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ LIB_DIR = libft/
 INCS = -Iincludes/ -I$(LIB_DIR)includes/
 NAME = push_swap
 SRCS = push_swap.c \
-	push_swap_stack_utils1.c
+	push_swap_stack_utils1.c \
+	push_swap_stack_utils2.c \
+	push_swap_stack_prints.c \
+	push_swap_input_sort_chk.c
 OBJS = $(SRCS:.c=.o)
 RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
 RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
@@ -48,10 +51,16 @@ fclean: clean
 
 re: fclean all
 
-test100:
+test100: re
 	@./push_swap $(RNDS100)
 
-test500:
+testv100:
+	@valgrind --leak-check=full ./push_swap $(RNDS100)
+
+test500: re
 	@./push_swap $(RNDS500)
+
+testv500:
+	@valgrind --leak-check=full ./push_swap $(RNDS500)
 
 .PHONY: all clean fclean re push_swap
