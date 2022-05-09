@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:25:05 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 14:04:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/10 02:12:30 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,20 @@ static void	ft_stack_pnt_sub(int stk_max, t_stack *stk_a, t_stack *stk_b)
 
 	ptr_node_a = stk_a->top;
 	ptr_node_b = stk_b->top;
+	ft_printf("-------------------------------------------------\n");
+	ft_printf("|\t%-11s %d\t|\t%-11s %d\t|\n", "Stack A", stk_a->stack_cnt, \
+	"Stack B", stk_b->stack_cnt);
+	ft_printf("-------------------------------------------------\n");
 	while (stk_max > 0)
 	{
 		ptr_node_a = ft_stack_pnt_a(stk_max, stk_a, ptr_node_a);
 		ptr_node_b = ft_stack_pnt_b(stk_max, stk_b, ptr_node_b);
 		stk_max--;
 	}
-	ft_printf("_________________________________\n");
+	ft_printf("-------------------------------------------------\n");
+	ft_printf("|\t%-11s %d\t|\t%-11s %d\t|\n", "Stack A", stk_a->stack_cnt, \
+	"Stack B", stk_b->stack_cnt);
+	ft_printf("-------------------------------------------------\n");
 }
 
 static t_node	*ft_stack_pnt_a(int stk_max, t_stack *stk_a, t_node *ptr_node)
@@ -69,7 +76,7 @@ static t_node	*ft_stack_pnt_a(int stk_max, t_stack *stk_a, t_node *ptr_node)
 			ptr_node = ptr_node->prev;
 		}
 		else
-			ft_printf("|\t%11s\t|\t", "");
+			ft_printf("|\t%11s\t|", "");
 	}
 	return (ptr_node);
 }

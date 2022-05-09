@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/09 15:27:44 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/10 02:19:50 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,25 @@ NAMED = push_swap_debug
 SRCS = push_swap.c \
 	push_swap_stack_cmd1.c \
 	push_swap_stack_cmd2.c \
+	push_swap_stack_cmd3.c \
 	push_swap_stack_utils1.c \
 	push_swap_stack_utils2.c \
 	push_swap_stack_utils3.c \
 	push_swap_stack_prints.c \
+	push_swap_stack_tester.c \
 	push_swap_input_sort_chk.c \
 	push_swap_input_sort_chk2.c \
 	push_swap_input_verify.c \
 	push_swap_err_msg.c
 
 OBJS = $(SRCS:.c=.o)
+RNDS10 = `ruby -e "puts (0..10).to_a.shuffle.join(' ')";`
 RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
 RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
+
+RNDSN10 = `ruby -e "puts (-5..5).to_a.shuffle.join(' ')";`
+RNDSN100 = `ruby -e "puts (-50..50).to_a.shuffle.join(' ')";`
+RNDSN500 = `ruby -e "puts (-250..250).to_a.shuffle.join(' ')";`
 
 all: $(NAME)
 
@@ -72,6 +79,12 @@ fclean: clean
 
 re: fclean all
 
+test10: re
+	@./push_swap $(RNDS10)
+
+testv10:
+	@valgrind --leak-check=full ./push_swap $(RNDS10)
+
 test100: re
 	@./push_swap $(RNDS100)
 
@@ -83,6 +96,24 @@ test500: re
 
 testv500:
 	@valgrind --leak-check=full ./push_swap $(RNDS500)
+
+testn10: re
+	@./push_swap $(RNDSN10)
+
+testnv10:
+	@valgrind --leak-check=full ./push_swap $(RNDSN10)
+
+testn100: re
+	@./push_swap $(RNDSN100)
+
+testnv100:
+	@valgrind --leak-check=full ./push_swap $(RNDSN100)
+
+testn500: re
+	@./push_swap $(RNDSN500)
+
+testnv500:
+	@valgrind --leak-check=full ./push_swap $(RNDSN500)
 
 norm_c:
 	@norminette -R CheckForbiddenSourceHeader **/*.c

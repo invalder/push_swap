@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_input_sort_chk.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:14:56 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 14:01:10 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:30:09 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,9 @@ static long	*ft_counting_sort(long *samples, int len, long base)
 {
 	long	*new_sample;
 	long	*count;
-	long	max;
 	int		idx;
 
 	idx = len -1;
-	max = ft_find_max(samples, len, base);
 	new_sample = (long *)malloc(sizeof(long) * (len));
 	count = (long *)malloc(sizeof(long) * (19));
 	if (ft_mlc_chk(samples, new_sample, count))

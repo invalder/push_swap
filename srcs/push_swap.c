@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 14:01:30 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/10 01:34:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ static void	ft_stk_creation_chk(t_stack *stk_a, t_stack *stk_b);
 
 int	main(int argc, char **argv)
 {
-	int		arr_len;
 	int		isinputok;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	arr_len = 0;
 	isinputok = 0;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -39,6 +37,7 @@ int	main(int argc, char **argv)
 	if (isinputok)
 		ft_exit_stderr();
 	ft_stack_print_all(stack_a, stack_b);
+	ft_stack_testing(stack_a, stack_b);
 	ft_stacks_cleanup(stack_a, stack_b);
 }
 

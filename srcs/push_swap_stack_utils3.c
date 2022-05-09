@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:08:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 11:12:10 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/10 01:48:33 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	ft_stack_push_node(t_stack *stk, t_node *new_node)
 {
+	if (!new_node)
+		return (-1);
+	new_node->next = NULL;
+	new_node->prev = NULL;
 	if (stk->top && stk->bottom)
 	{
 		stk->top->next = new_node;

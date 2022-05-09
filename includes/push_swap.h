@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 15:15:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/10 01:34:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,10 @@ int		ft_stack_pb(t_stack *stk_a, t_stack *stk_b);
 int		ft_stack_ra(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rb(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rr(t_stack *stk_a, t_stack *stk_b);
+int		ft_stack_rra(t_stack *stk_a, t_stack *stk_b, int iscalled);
+int		ft_stack_rrb(t_stack *stk_a, t_stack *stk_b, int iscalled);
+int		ft_stack_rrr(t_stack *stk_a, t_stack *stk_b);
+
+void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b);
 
 #endif
