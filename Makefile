@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/06 19:48:54 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/09 11:12:32 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,13 @@ NAME = push_swap
 SRCS = push_swap.c \
 	push_swap_stack_utils1.c \
 	push_swap_stack_utils2.c \
+	push_swap_stack_utils3.c \
 	push_swap_stack_prints.c \
-	push_swap_input_sort_chk.c
+	push_swap_input_sort_chk.c \
+	push_swap_input_sort_chk2.c \
+	push_swap_input_verify.c \
+	push_swap_err_msg.c
+
 OBJS = $(SRCS:.c=.o)
 RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
 RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`

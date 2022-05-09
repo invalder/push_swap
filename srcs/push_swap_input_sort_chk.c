@@ -6,36 +6,32 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:14:56 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/06 19:53:55 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:31:41 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// ft_arr_range
-// int	ft_arr_range(char **arr)
-static void	ft_cnt_calc(int *samples, int *count, int len, int base);
-static int	*ft_counting_sort(int *sample, int len, int base);
-static void ft_print_samples(int *samples, int len);
-static int	*ft_radix_sort(int *samples, int len);
-static int	ft_find_max(int *samples, int len, int base);
-static int	ft_mlc_chk(int *samples, int *new_sample, int *count);
+static void	ft_cnt_calc(long *samples, long *count, int len, int base);
+static long	*ft_counting_sort(long *samples, int len, int base);
+static long	*ft_radix_sort(long *samples, int len);
+static int	ft_find_max(long *samples, int len, int base);
 
-int	*ft_radix_sort_main(char **arr)
+long	*ft_radix_sort_main(char **arr)
 {
-	int	arr_len;
-	int	*samples;
-	int	idx;
+	int		arr_len;
+	long	*samples;
+	int		idx;
 
 	idx = 0;
 	arr_len = ft_arr_range(arr);
-	samples = (int *)malloc(sizeof(int) * arr_len);
+	samples = (long *)malloc(sizeof(long) * arr_len);
 	if (!samples)
 		return (NULL);
-	ft_bzero(samples, sizeof(int) * arr_len);
+	ft_bzero(samples, sizeof(long) * arr_len);
 	while (idx < arr_len)
 	{
-		samples[idx] = ft_atoi(arr[idx]);
+		samples[idx] = ft_atol(arr[idx]);
 		idx++;
 	}
 	samples = ft_radix_sort(samples, arr_len);
@@ -44,7 +40,7 @@ int	*ft_radix_sort_main(char **arr)
 	return (NULL);
 }
 
-static int	*ft_radix_sort(int *samples, int len)
+static long	*ft_radix_sort(long *samples, int len)
 {
 	int	max;
 	int	base;
@@ -58,15 +54,13 @@ static int	*ft_radix_sort(int *samples, int len)
 			return (NULL);
 		base *= 10;
 	}
-	ft_print_samples(samples, len);
-	ft_printf("base = %d, max = %d\n\n", base, max);
 	return (samples);
 }
 
-static int	ft_find_max(int *samples, int len, int base)
+static int	ft_find_max(long *samples, int len, int base)
 {
 	int	idx;
-	int max;
+	int	max;
 
 	idx = 0;
 	max = 0;
@@ -91,21 +85,20 @@ static int	ft_find_max(int *samples, int len, int base)
 	return (max);
 }
 
-static int	*ft_counting_sort(int *samples, int len, int base)
+static long	*ft_counting_sort(long *samples, int len, int base)
 {
-	int	*new_sample;
-	int	*count;
-	int	max;
-	int	idx;
+	long	*new_sample;
+	long	*count;
+	int		max;
+	int		idx;
 
 	idx = len -1;
 	max = ft_find_max(samples, len, base);
-	ft_printf("max = %d\n", max);
-	new_sample = (int *)malloc(sizeof(int) * (len));
-	count = (int *)malloc(sizeof(int) * (10));
+	new_sample = (long *)malloc(sizeof(long) * (len));
+	count = (long *)malloc(sizeof(long) * (10));
 	if (ft_mlc_chk(samples, new_sample, count))
 		return (NULL);
-	ft_bzero(count, sizeof(int) * (10));
+	ft_bzero(count, sizeof(long) * (10));
 	ft_cnt_calc(samples, count, len, base);
 	while (idx >= 0)
 	{
@@ -118,7 +111,7 @@ static int	*ft_counting_sort(int *samples, int len, int base)
 	return (new_sample);
 }
 
-static void	ft_cnt_calc(int *samples, int *count, int len, int base)
+static void	ft_cnt_calc(long *samples, long *count, int len, int base)
 {
 	int	idx;
 
@@ -133,30 +126,5 @@ static void	ft_cnt_calc(int *samples, int *count, int len, int base)
 	{
 		count[idx] += count[idx - 1];
 		idx++;
-	}
-}
-
-static int	ft_mlc_chk(int *samples, int *new_sample, int *count)
-{
-	if (!new_sample || !count)
-	{
-		free(samples);
-		if (count)
-			free(count);
-		if (new_sample)
-			free(new_sample);
-		return (1);
-	}
-	return (0);
-}
-
-static void	ft_print_samples(int *samples, int len)
-{
-	int	idx;
-
-	idx = 0;
-	while (idx < len)
-	{
-		ft_printf("|\t%d\t|\n", samples[idx++]);
 	}
 }

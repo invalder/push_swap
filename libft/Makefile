@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2022/04/03 20:07:50 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/08 15:50:26 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ IS_LIBC = ft_isalnum.c \
 		ft_isspace.c
 TO_LIBC = ft_toupper.c \
 		ft_tolower.c \
-		ft_atoi.c
+		ft_atoi.c \
+		ft_atol.c
 STR_LIBC = ft_strchr.c \
 		ft_strrchr.c \
 		ft_strlen.c \
