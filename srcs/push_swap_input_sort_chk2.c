@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 23:10:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 11:38:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:02:02 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_print_samples(long *samples, int len)
 int	ft_check_inp_dup(char **arr)
 {
 	int		idx;
-	int		tmp;
+	long	tmp;
 	int		arr_len;
 	long	*samples;
 
@@ -36,8 +36,9 @@ int	ft_check_inp_dup(char **arr)
 	tmp = samples[0];
 	while (idx < arr_len)
 	{
-		if (tmp == samples[idx] || samples[idx] > INT_MAX
-			|| samples[idx] < INT_MIN)
+		if (tmp == samples[idx] || (long)samples[idx] < (long)INT_MIN
+			|| (long)samples[idx] > (long)INT_MAX || tmp < (long)INT_MIN
+			|| tmp > (long)INT_MAX)
 		{
 			free(samples);
 			return (1);

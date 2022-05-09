@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/09 11:12:32 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/09 11:49:35 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,11 @@ all: $(NAME)
 
 $(NAME):	$(addprefix $(OBJ_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
-		$(CC) $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
+		$(CC) -g $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< $(INCS) -o $@
+	$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
 
 bonus: $(NAME)
 

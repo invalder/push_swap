@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:25:05 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/07 00:59:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:04:41 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ static t_node	*ft_stack_pnt_a(int stk_max, t_stack *stk_a, t_node *ptr_node)
 	{
 		if (stk_a->stack_cnt >= stk_max)
 		{
-			ft_printf("|\t%03d\t|", ptr_node->content);
+			ft_printf("|\t%11d\t|", ptr_node->content);
 			ptr_node = ptr_node->prev;
 		}
 		else
-			ft_printf("|\t\t|\t");
+			ft_printf("|\t%11s\t|\t", "");
 	}
 	return (ptr_node);
 }
@@ -80,11 +80,11 @@ static t_node	*ft_stack_pnt_b(int stk_max, t_stack *stk_b, t_node *ptr_node)
 	{
 		if (stk_b->stack_cnt >= stk_max)
 		{
-			ft_printf("\t%03d\t|\n", ptr_node->content);
+			ft_printf("\t%11d\t|\n", ptr_node->content);
 			ptr_node = ptr_node->prev;
 		}
 		else
-			ft_printf("\t\t|\n");
+			ft_printf("\t%11s\t|\n", "");
 	}
 	return (ptr_node);
 }
