@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/09 11:49:35 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/09 14:54:31 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ LIB_DIR = libft/
 INCS = -Iincludes/ -I$(LIB_DIR)includes/
 NAME = push_swap
 SRCS = push_swap.c \
+	push_swap_stack_cmd1.c \
+	push_swap_stack_cmd2.c \
 	push_swap_stack_utils1.c \
 	push_swap_stack_utils2.c \
 	push_swap_stack_utils3.c \

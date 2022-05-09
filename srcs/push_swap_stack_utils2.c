@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:19:40 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 11:24:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:01:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_node	*ft_stack_pop(t_stack *stk)
 
 int	ft_stack_rot(t_stack *stk)
 {
-	if (stk->top && stk->bottom)
+	if (stk->top && stk->bottom && stk->stack_cnt > 1)
 	{
 		stk->top->next = stk->bottom;
 		stk->bottom->prev = stk->top;
@@ -95,7 +95,7 @@ int	ft_stack_rot(t_stack *stk)
 
 int	ft_stack_rev_rot(t_stack *stk)
 {
-	if (stk->top && stk->bottom)
+	if (stk->top && stk->bottom && stk->stack_cnt > 1)
 	{
 		stk->top->next = stk->bottom;
 		stk->bottom->prev = stk->top;

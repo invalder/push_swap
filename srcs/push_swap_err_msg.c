@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 14:06:29 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 14:10:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:11:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 
 void	ft_exit_req_args(void)
 {
-	ft_printf("<<TRY THIS>>\nARG:\n%sor\n1 ARG:\n%sor\nSTDIN:\n%s<<TRY THIS>>\n", ARGREQ1, ARGREQ2, ARGREQ3);
+	ft_printf("<<TRY THIS>>\n");
+	ft_printf("ARG:\n%s", ARGREQ1);
+	ft_printf("or\n1 ARG:\n%s", ARGREQ2);
+	ft_printf("or\nSTDIN:\n%s<<TRY THIS>>\n", ARGREQ3);
 	exit(1);
 }
 
