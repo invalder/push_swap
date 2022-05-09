@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 15:14:12 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:15:23 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_input_verifications(char **p_arr, int isarg);
 void	ft_exit_req_args(void);
 void	ft_exit_customize(char *errmsg);
 void	ft_exit_stderr(void);
+
 int		ft_stack_sa(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_sb(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_ss(t_stack *stk_a, t_stack *stk_b);
