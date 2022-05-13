@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:47:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 16:23:42 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:50:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_stack_issorted(t_stack *stk_a, t_stack *stk_b)
 	t_node	*p_node;
 	int		tmp;
 
-	if (stk_b->top && stk_b->bottom && stk_b->stack_cnt == 0)
+	if (!stk_b->top && !stk_b->bottom && stk_b->stack_cnt == 0)
 	{
 		tmp = stk_a->top->content;
 		p_node = stk_a->top->prev;
@@ -31,6 +31,34 @@ int	ft_stack_issorted(t_stack *stk_a, t_stack *stk_b)
 		return (0);
 	}
 	return (1);
+}
+
+// 0 asc, 1 desc
+int	ft_stack_issorted_single(t_stack *stk, int dir)
+{
+	t_node	*p_node;
+	int		tmp;
+
+	if (stk->top && stk->bottom && stk->stack_cnt >= 1)
+	{
+		if (stk->stack_cnt > 1)
+		{
+			tmp = stk->top->content;
+			p_node = stk->top->prev;
+			while (p_node)
+			{
+				if (dir)
+					if (tmp < p_node->content)
+						return (1);
+				else
+					if (tmp > p_node->content)
+						return (1);
+				tmp = p_node->content;
+				p_node = p_node->prev;
+			}
+		}
+		return (0);
+	}
 }
 
 int	ft_stack_n_pa(t_stack *stk_a, t_stack *stk_b, int n)
