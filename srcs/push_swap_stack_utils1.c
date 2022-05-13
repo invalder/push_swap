@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 18:32:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 16:19:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:18:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_stack	*ft_stack_create(void)
 		return (NULL);
 	create_stack->bottom = NULL;
 	create_stack->top = NULL;
+	create_stack->max = 0;
+	create_stack->min = 0;
 	create_stack->stack_cnt = 0;
 	return (create_stack);
 }
@@ -46,6 +48,8 @@ void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b)
 		stack_a->top = NULL;
 		ft_clear_nodes(stack_a->bottom);
 		stack_a->stack_cnt = 0;
+		stack_a->min = 0;
+		stack_a->max = 0;
 		free(stack_a);
 		stack_a = NULL;
 	}
@@ -54,6 +58,8 @@ void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b)
 		stack_b->top = NULL;
 		ft_clear_nodes(stack_b->bottom);
 		stack_b->stack_cnt = 0;
+		stack_b->min = 0;
+		stack_b->max = 0;
 		free(stack_b);
 		stack_b = NULL;
 	}
@@ -67,12 +73,18 @@ void	ft_clear_nodes(t_node *node)
 	p_node = node;
 	while (p_node)
 	{
-		tmp_node = p_node->next;
+		if (p_node->next)
+			tmp_node = p_node->next;
+		else
+			tmp_node = NULL;
 		p_node->content = 0;
 		p_node->prev = NULL;
 		p_node->next = NULL;
 		if (p_node)
+		{
 			free(p_node);
+			p_node = NULL;
+		}
 		p_node = tmp_node;
 	}
 }

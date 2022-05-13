@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:19:40 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 16:11:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:17:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ int	ft_stack_push(t_stack *stk, int content)
 		stk->top->next = new_node;
 		new_node->prev = stk->top;
 		stk->top = new_node;
-		stk->stack_cnt++;
 	}
-	else
+	else if (stk->bottom)
 	{
 		stk->top = new_node;
-		stk->bottom = new_node;
-		stk->stack_cnt++;
+		stk->bottom->next = stk->top;
+		stk->top->prev = stk->bottom;
 	}
+	else
+		stk->bottom = new_node;
+	stk->stack_cnt++;
 	return (0);
 }
 
@@ -53,14 +55,16 @@ int	ft_stack_appendlast(t_stack *stk, int content)
 		stk->bottom->prev = new_node;
 		new_node->next = stk->bottom;
 		stk->bottom = new_node;
-		stk->stack_cnt++;
+	}
+	else if (stk->top)
+	{
+		stk->bottom = new_node;
+		stk->top->prev = stk->bottom;
+		stk->bottom->next = stk->top;
 	}
 	else
-	{
 		stk->top = new_node;
-		stk->bottom = new_node;
-		stk->stack_cnt++;
-	}
+	stk->stack_cnt++;
 	return (0);
 }
 
@@ -68,14 +72,26 @@ t_node	*ft_stack_pop(t_stack *stk)
 {
 	t_node	*ret_node;
 
-	if (stk->top && stk->bottom && stk->stack_cnt > 0)
+	if (stk->top && stk->bottom && stk->stack_cnt-- > 0)
 	{
 		ret_node = stk->top;
 		if (stk->top->prev)
+		{
 			stk->top = stk->top->prev;
-		if (stk->top->next)
-			stk->top->next = NULL;
-		stk->stack_cnt--;
+			if (stk->top->next)
+				stk->top->next = NULL;
+		}
+		else
+		{
+			stk->top = NULL;
+			stk->bottom = NULL;
+		}
+		return (ret_node);
+	}
+	else if (stk->bottom && stk->stack_cnt-- > 0)
+	{
+		ret_node = stk->bottom;
+		stk->bottom = NULL;
 		return (ret_node);
 	}
 	return (NULL);
