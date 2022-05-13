@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/10 01:34:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:48:07 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_stack
 	t_node	*bottom;
 	t_node	*top;
 	int		stack_cnt;
+	int		min;
+	int		max;
 }	t_stack;
 
 int		ft_arr_range(char **arr);
@@ -50,9 +52,9 @@ void	ft_print_samples(long *samples, int len);
 int		ft_check_inp_dup(char **arr);
 int		ft_mlc_chk(long *samples, long *new_sample, long *count);
 int		ft_input_verifications(char **p_arr, int isarg);
-void	ft_exit_req_args(void);
+void	ft_exit_req_args(t_stack *stk_a, t_stack *stk_b);
 void	ft_exit_customize(char *errmsg);
-void	ft_exit_stderr(void);
+void	ft_exit_stderr(t_stack *stk_a, t_stack *stk_b);
 
 int		ft_stack_sa(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_sb(t_stack *stk_a, t_stack *stk_b, int iscalled);
@@ -67,5 +69,13 @@ int		ft_stack_rrb(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rrr(t_stack *stk_a, t_stack *stk_b);
 
 void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b);
+
+void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b);
+void	ft_stack_stats_all(t_stack *stk_a, t_stack *stk_b);
+void	ft_stack_stats(t_stack *stk);
+void	ft_stack_find_min(t_stack *stk);
+void	ft_stack_find_max(t_stack *stk);
+
+int		ft_stack_issorted(t_stack *stk_a, t_stack *stk_b);
 
 #endif
