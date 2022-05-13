@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 15:48:07 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:51:05 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ void	ft_stack_find_min(t_stack *stk);
 void	ft_stack_find_max(t_stack *stk);
 
 int		ft_stack_issorted(t_stack *stk_a, t_stack *stk_b);
+int		ft_stack_n_pa(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_pb(t_stack *stk_a, t_stack *stk_b, int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:40:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 01:41:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:04:06 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b)
 {
 	ft_stack_stats_all(stk_a, stk_b);
+	ft_stack_n_pb(stk_a, stk_b, stk_a->stack_cnt);
+	ft_stack_print_all(stk_a, stk_b);
 }
 
 void	ft_stack_stats_all(t_stack *stk_a, t_stack *stk_b)

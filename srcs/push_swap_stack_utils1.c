@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 18:32:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/02 09:18:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:19:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b)
 		ft_clear_nodes(stack_a->bottom);
 		stack_a->stack_cnt = 0;
 		free(stack_a);
+		stack_a = NULL;
 	}
 	if (stack_b)
 	{
@@ -54,6 +55,7 @@ void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b)
 		ft_clear_nodes(stack_b->bottom);
 		stack_b->stack_cnt = 0;
 		free(stack_b);
+		stack_b = NULL;
 	}
 }
 
@@ -69,7 +71,8 @@ void	ft_clear_nodes(t_node *node)
 		p_node->content = 0;
 		p_node->prev = NULL;
 		p_node->next = NULL;
-		free(p_node);
+		if (p_node)
+			free(p_node);
 		p_node = tmp_node;
 	}
 }
