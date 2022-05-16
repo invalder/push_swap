@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:40:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/14 02:51:57 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:53:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,64 @@
 void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b)
 {
 	int		swap; //0: nothing, 1: sa, 2: sb, 3: ss
+	t_decs	decs_tab;
 
 	swap = 0;
 	ft_stack_stats_all(stk_a, stk_b);
-	// ft_printf("sorted = %d\n", ft_stack_issorted(stk_a, stk_b));
-	// ft_stack_n_pb(stk_a, stk_b, (stk_a->stack_cnt + 1) / 2);
-	// ft_stack_stats_all(stk_a, stk_b);
-	// ft_stack_print_all(stk_a, stk_b);
 	if (ft_stack_issorted(stk_a, stk_b))
-		ft_stack_n_pb(stk_a, stk_b, (stk_a->stack_cnt + 1) / 2);
+		ft_stack_n_pb(stk_a, stk_b, stk_a->stack_cnt - 1);
+	else
+		return ;
 	while (ft_stack_issorted(stk_a, stk_b))
 	{
-		// if (stk_b->top->content < stk_a->top->content)
-		// {
-		// 	ft_stack_pa(stk_a, stk_b);
-		// 	ft_stack_ra(stk_a, stk_b, 0);
-		// }
+		if (stk_b->stack_cnt > 0)
+		{
+			if (stk_b->top->content < stk_a->top->content)
+			{
+				ft_stack_find_min_diff(stk_a, stk_b->top->content, &decs_tab);
+				ft_print_decs(&decs_tab);
+				ft_sorting_decision(stk_a, stk_b, &decs_tab);
+				ft_reset_decs(&decs_tab);
+			}
+			else
+			{
+				ft_stack_ra(stk_a, stk_b, 0);
+				ft_printf("diff = %d\n", stk_b->top->content - stk_a->top->content);
+				if (stk_b->top->content - stk_a->top->content > 1)
+				{
+					ft_stack_rb(stk_a, stk_b, 0);
+				}
+				else
+					ft_stack_pa(stk_a, stk_b);
+				// if (ft_stack_rr(stk_a, stk_b))
+				// ft_stack_rb(stk_a, stk_b, 0);
+				// ft_stack_find_min_diff(stk_a, stk_b->top->content, &decs_tab);
+				// ft_print_decs(&decs_tab);
+				// ft_sorting_decision(stk_a, stk_b, &decs_tab);
+				// ft_reset_decs(&decs_tab);
+			}
+
+			// ft_stack_rb(stk_a, stk_b, 0);
+			// if (stk_b->top->content > stk_a->top->content)
+			// {
+			// 	//find minimum diff
+			// 	ft_stack_find_min_diff(stk_a, stk_b->top->content, &decs_tab);
+			// 	ft_print_decs(&decs_tab);
+			// 	//rotational decision
+			// 	ft_sorting_decision(stk_a, stk_b, &decs_tab);
+			// 	//push or push swap
+			// 	ft_reset_decs(&decs_tab);
+			// }
+			// else
+			// {
+			// 	ft_stack_rb(stk_a, stk_b, 0);
+			// }
+		}
 		// else
 		// {
-		// 	ft_stack_rb(stk_a, stk_b, 0);
+		// 	ft_stack_rra(stk_a, stk_b, 0);
+		// 	ft_stack_pb(stk_a, stk_b);
 		// }
-		// check stack a asc
-		if (int	ft_stack_issorted_single(stk_a, 0))
-		{
-
-		}
-		// check stack b desc
-		if (int	ft_stack_issorted_single(stk_b, 1))
-		{
-			if (stk_b->top->content < stk_b->top->prev->content)
-				ft_stack_sb(stk_a, stk_b, 0);
-		}
 		sleep(2);
 		ft_stack_stats_all(stk_a, stk_b);
 		ft_stack_print_all(stk_a, stk_b);

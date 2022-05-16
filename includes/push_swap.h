@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 15:51:05 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:33:21 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_stack
 	int		min;
 	int		max;
 }	t_stack;
+
+typedef struct s_decision
+{
+	int		depth;
+	int		min_diff;
+	int		isneg;
+}	t_decs;
 
 int		ft_arr_range(char **arr);
 t_stack	*ft_stack_create(void);
@@ -79,5 +86,18 @@ void	ft_stack_find_max(t_stack *stk);
 int		ft_stack_issorted(t_stack *stk_a, t_stack *stk_b);
 int		ft_stack_n_pa(t_stack *stk_a, t_stack *stk_b, int n);
 int		ft_stack_n_pb(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_ra(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_rb(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_rra(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_rrb(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_rr(t_stack *stk_a, t_stack *stk_b, int n);
+int		ft_stack_n_rrr(t_stack *stk_a, t_stack *stk_b, int n);
+
+void	ft_stack_find_min_diff(t_stack *stk, int key, t_decs *decs_tab);
+int		ft_update_decs(t_decs *decs_tab, int key, int node);
+void	ft_reset_decs(t_decs *decs_tab);
+void	ft_print_decs(t_decs *decs_tab);
+
+void	ft_sorting_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab);
 
 #endif

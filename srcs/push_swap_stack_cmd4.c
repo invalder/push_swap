@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:47:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/14 02:50:22 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/15 11:02:36 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_stack_issorted_single(t_stack *stk, int dir)
 				if (dir)
 					if (tmp < p_node->content)
 						return (1);
-				else
+				if (!dir)
 					if (tmp > p_node->content)
 						return (1);
 				tmp = p_node->content;
@@ -59,6 +59,7 @@ int	ft_stack_issorted_single(t_stack *stk, int dir)
 		}
 		return (0);
 	}
+	return (-1);
 }
 
 int	ft_stack_n_pa(t_stack *stk_a, t_stack *stk_b, int n)
