@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/15 16:34:24 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/24 01:29:35 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,12 @@ SRCS = push_swap.c \
 	push_swap_err_msg.c
 
 OBJS = $(SRCS:.c=.o)
+RNDS5 = `ruby -e "puts (1..5).to_a.shuffle.join(' ')";`
 RNDS10 = `ruby -e "puts (0..10).to_a.shuffle.join(' ')";`
 RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
 RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
 
+RNDSN5 = `ruby -e "puts (-2..2).to_a.shuffle.join(' ')";`
 RNDSN10 = `ruby -e "puts (-5..5).to_a.shuffle.join(' ')";`
 RNDSN100 = `ruby -e "puts (-50..50).to_a.shuffle.join(' ')";`
 RNDSN500 = `ruby -e "puts (-250..250).to_a.shuffle.join(' ')";`
@@ -57,33 +59,39 @@ debug: $(NAMED)
 
 $(NAME):	$(addprefix $(OBJ_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
-		$(CC) $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
+		@$(CC) $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
 
 $(NAMED):	$(addprefix $(OBJD_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
-		$(CC) -g $(addprefix $(OBJD_DIR),$(OBJS)) -o push_swap_debug -L $(LIB_DIR) -lft
+		@$(CC) -g $(CFLAGS) $(addprefix $(OBJD_DIR),$(OBJS)) -o push_swap_debug -L $(LIB_DIR) -lft
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< $(INCS) -o $@
+	@$(CC) $(CFLAGS) -c $< $(INCS) -o $@
 
 $(OBJD_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJD_DIR)
-	$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
+	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
 
 bonus: $(NAME)
 
 clean:
 	@make -C $(LIB_DIR) clean --silent
-	$(RM) $(OBJ_DIR)
-	$(RM) $(OBJD_DIR)
+	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJD_DIR)
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean --silent
-	$(RM) push_swap
-	$(RM) push_swap_debug
+	@$(RM) push_swap
+	@$(RM) push_swap_debug
 
 re: fclean all
+
+test5: re
+	@./push_swap $(RNDS5)
+
+testv5:
+	@valgrind --leak-check=full ./push_swap $(RNDS5)
 
 test10: re
 	@./push_swap $(RNDS10)
@@ -102,6 +110,12 @@ test500: re
 
 testv500:
 	@valgrind --leak-check=full ./push_swap $(RNDS500)
+
+testn5: re
+	@./push_swap $(RNDSN5)
+
+testnv5:
+	@valgrind --leak-check=full ./push_swap $(RNDSN5)
 
 testn10: re
 	@./push_swap $(RNDSN10)

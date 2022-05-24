@@ -53,3 +53,5 @@ dkms.conf
 
 push_swap
 push_swap_debug
+
+test*.txt
