@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/24 01:29:35 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/24 09:05:40 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,14 +44,14 @@ SRCS = push_swap.c \
 
 OBJS = $(SRCS:.c=.o)
 RNDS5 = `ruby -e "puts (1..5).to_a.shuffle.join(' ')";`
-RNDS10 = `ruby -e "puts (0..10).to_a.shuffle.join(' ')";`
-RNDS100 = `ruby -e "puts (0..100).to_a.shuffle.join(' ')";`
-RNDS500 = `ruby -e "puts (0..500).to_a.shuffle.join(' ')";`
+RNDS10 = `ruby -e "puts (1..10).to_a.shuffle.join(' ')";`
+RNDS100 = `ruby -e "puts (1..100).to_a.shuffle.join(' ')";`
+RNDS500 = `ruby -e "puts (1..500).to_a.shuffle.join(' ')";`
 
 RNDSN5 = `ruby -e "puts (-2..2).to_a.shuffle.join(' ')";`
-RNDSN10 = `ruby -e "puts (-5..5).to_a.shuffle.join(' ')";`
-RNDSN100 = `ruby -e "puts (-50..50).to_a.shuffle.join(' ')";`
-RNDSN500 = `ruby -e "puts (-250..250).to_a.shuffle.join(' ')";`
+RNDSN10 = `ruby -e "puts (-5..4).to_a.shuffle.join(' ')";`
+RNDSN100 = `ruby -e "puts (-50..49).to_a.shuffle.join(' ')";`
+RNDSN500 = `ruby -e "puts (-250..249).to_a.shuffle.join(' ')";`
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:08:49 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 02:51:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/24 09:03:03 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_sorting_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab)
 	key = stk_b->top->content;
 	if (decs_tab->depth < decs_tab->height)
 	{
-		if (decs_tab->depth_isneg)
-			decs_tab->depth--;
+		decs_tab->depth--;
 		if (decs_tab->depth)
 			ft_stack_n_ra(stk_a, stk_b, decs_tab->depth);
 		ft_stack_pa(stk_a, stk_b);
@@ -61,6 +60,11 @@ void	ft_3_rand_nums(t_stack *stk_a, t_stack *stk_b)
 		}
 		else
 			ft_stack_rra(stk_a, stk_b, 0);
+	}
+	else if (mid < stk_a->top->content && mid > stk_a->bottom->content)
+	{
+		ft_stack_ra(stk_a, stk_b, 0);
+		ft_stack_sa(stk_a, stk_b, 0);
 	}
 	else
 	{
@@ -104,8 +108,7 @@ void	ft_5_rand_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab)
 	key = stk_b->top->content;
 	if (decs_tab->depth <= decs_tab->height)
 	{
-		if (decs_tab->depth_isneg)
-			decs_tab->depth--;
+		decs_tab->depth--;
 		if (decs_tab->depth)
 			ft_stack_n_ra(stk_a, stk_b, decs_tab->depth);
 		ft_stack_pa(stk_a, stk_b);
