@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:08:49 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 09:03:03 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:46:39 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ void	ft_3_rand_nums(t_stack *stk_a, t_stack *stk_b)
 		else
 			ft_stack_rra(stk_a, stk_b, 0);
 	}
-	else if (mid < stk_a->top->content && mid > stk_a->bottom->content)
-	{
-		ft_stack_ra(stk_a, stk_b, 0);
-		ft_stack_sa(stk_a, stk_b, 0);
-	}
 	else
 	{
 		ft_stack_sa(stk_a, stk_b, 0);
@@ -82,10 +77,6 @@ void	ft_5_rand_nums(t_stack *stk_a, t_stack *stk_b)
 		ft_reset_decs(&decs_top);
 		ft_stack_find_min_diff(stk_a, stk_b->top->content, &decs_top);
 		ft_5_rand_decision(stk_a, stk_b, &decs_top);
-		// if (decs_top.depth < decs_bottom.depth)
-		// 	ft_5_rand_decision(stk_a, stk_b, &decs_top);
-		// else
-		// 	ft_stack_rb(stk_a, stk_b, 0);
 	}
 }
 

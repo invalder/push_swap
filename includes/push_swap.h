@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 01:51:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:28:39 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_stack
 	int		stack_cnt;
 	int		min;
 	int		max;
+	int		nchunks;
+	int		*min_chnks;
+	int		*max_chnks;
 }	t_stack;
 
 typedef struct s_decision

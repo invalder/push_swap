@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 01:17:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/10 02:51:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:52:14 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b)
 				break ;
 			ptr++;
 		}
-		printf("sending: %s\n", buff);
+		ft_printf("sending: %s\n", buff);
 		if (!*buff)
 			loop = 0;
 		ft_opr_chk(buff, stk_a, stk_b, ft_strlen(buff));

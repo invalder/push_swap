@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 01:30:28 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:35:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 		isinputok = ft_stk_init_argv(argc, argv, stack_a);
 	if (isinputok)
 		ft_exit_stderr(stack_a, stack_b);
-	ft_stack_print_all(stack_a, stack_b);
 	ft_sorting_opr(stack_a, stack_b);
 	ft_stacks_cleanup(stack_a, stack_b);
 }
