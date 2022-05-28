@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:37:40 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 00:30:38 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:06:28 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,20 @@ void	ft_100_plus_sorting(t_stack *stk_a, t_stack *stk_b)
 	{
 		while (chk < stk_a->nchunks)
 		{
-			//check if nth chunks still existed in stack a
 			while (ft_is_chunk_pushed(stk_a, stk_b, chk))
 			{
 				ft_find_hold_positions(stk_a, &decs_tab, chk);
-
-				// debug
-				// ft_stack_print_all(stk_a, stk_b);
-				// ft_print_decs(&decs_tab);
-				// throw nth chunks to b
-				// how to throw
-
 				ft_chunks_push(stk_a, stk_b, &decs_tab, chk);
-
-				//debug
-				// break ;
 			}
-			// debug
-			// break ;
 			chk++;
 		}
-		// push back from max to minimum
 		chk = stk_a->max;
 		while (chk >= stk_a->min)
 		{
-			//find position
 			ft_find_positions(stk_b, &decs_tab, chk);
-
 			ft_chunks_pull(stk_a, stk_b, &decs_tab, chk);
-
-			// ft_print_decs(&decs_tab);
-			// break;
-			//push back
 			chk--;
 		}
-		// ft_stack_print_all(stk_a, stk_b);
-		// debug
-		// break ;
 	}
 }
 
@@ -72,10 +49,10 @@ int	ft_is_chunk_pushed(t_stack *stk_a, t_stack *stk_b, int chk)
 	up = stk_a->bottom;
 	while (down || up)
 	{
-		if ((down->content >= stk_a->min_chnks[chk] &&
-			down->content <= stk_a->max_chnks[chk]) ||
-			(up->content >= stk_a->min_chnks[chk] &&
-			up->content <= stk_a->max_chnks[chk]))
+		if ((down->content >= stk_a->min_chnks[chk] \
+				&& down->content <= stk_a->max_chnks[chk])
+			|| (up->content >= stk_a->min_chnks[chk] \
+				&& up->content <= stk_a->max_chnks[chk]))
 			return (1);
 		down = down->prev;
 		up = up->next;
@@ -91,8 +68,8 @@ void	ft_find_hold_position_down(t_stack *stk_a, t_decs *decs_tab, int chk)
 	while (down)
 	{
 		decs_tab->depth++;
-		if (down->content >= stk_a->min_chnks[chk] &&
-			down->content <= stk_a->max_chnks[chk])
+		if (down->content >= stk_a->min_chnks[chk]
+			&& down->content <= stk_a->max_chnks[chk])
 		{
 			decs_tab->depth_min = down->content;
 			break ;
@@ -109,8 +86,8 @@ void	ft_find_hold_position_up(t_stack *stk_a, t_decs *decs_tab, int chk)
 	while (up)
 	{
 		decs_tab->height++;
-		if (up->content >= stk_a->min_chnks[chk] &&
-			up->content <= stk_a->max_chnks[chk])
+		if (up->content >= stk_a->min_chnks[chk]
+			&& up->content <= stk_a->max_chnks[chk])
 		{
 			decs_tab->height_min = up->content;
 			break ;

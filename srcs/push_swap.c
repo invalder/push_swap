@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/27 11:46:33 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:03:03 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,5 @@ static long	*ft_sorted_sample(int argc, char **argv)
 	{
 		samples = ft_radix_sort_main(argv + 1);
 	}
-	return samples;
+	return (samples);
 }

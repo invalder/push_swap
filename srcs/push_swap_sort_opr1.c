@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:40:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/27 11:39:11 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:02:40 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b, long *samples)
 		}
 		else
 		{
-			// ft_stack_n_pb(stk_a, stk_b, stk_a->stack_cnt - 3);
-			// while (ft_stack_issorted_single(stk_a, 0))
-			// {
-			// 	ft_3_rand_nums(stk_a, stk_b);
-			// }
-			// ft_rand_nums(stk_a, stk_b);
 			ft_chunk_calculator(stk_a, stk_b, samples);
 		}
 	}

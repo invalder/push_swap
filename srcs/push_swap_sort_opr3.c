@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 22:46:58 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 01:06:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:04:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ void	ft_chunks_cleanup(t_stack *stk_a, t_stack *stk_b, long *samples)
 
 void	ft_chunks_assign(t_stack *stk_a, t_stack *stk_b, long *samples)
 {
-	(void)stk_b;
 	int	nchk;
-	int chklen;
+	int	chklen;
 	int	cnt;
 
+	(void)stk_b;
 	cnt = 0;
 	nchk = stk_a->nchunks;
 	chklen = stk_a->stack_cnt / nchk;
-	while (cnt < nchk )
+	while (cnt < nchk)
 	{
 		stk_a->min_chnks[cnt] = (int)samples[cnt * chklen];
 		stk_a->max_chnks[cnt] = (int)samples[(cnt * chklen) + chklen - 1];
