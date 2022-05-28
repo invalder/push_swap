@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 21:28:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 00:08:07 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		ft_stack_rrr(t_stack *stk_a, t_stack *stk_b);
 
 void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b);
 
-void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b);
+void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b, long *samples);
 void	ft_stack_stats_all(t_stack *stk_a, t_stack *stk_b);
 void	ft_stack_stats(t_stack *stk);
 void	ft_stack_find_min(t_stack *stk);
@@ -112,5 +112,23 @@ void	ft_3_rand_nums(t_stack *stk_a, t_stack *stk_b);
 void	ft_5_rand_nums(t_stack *stk_a, t_stack *stk_b);
 void	ft_rand_nums(t_stack *stk_a, t_stack *stk_b);
 void	ft_5_rand_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab);
+
+void	ft_chunk_calculator(t_stack *stk_a, t_stack *stk_b, long *samples);
+void	ft_chunks_alloc(t_stack *stk_a, t_stack *stk_b, long *samples);
+void	ft_chunks_validate(t_stack *stk_a, t_stack *stk_b, long *samples);
+void	ft_chunks_cleanup(t_stack *stk_a, t_stack *stk_b, long *samples);
+void	ft_chunks_assign(t_stack *stk_a, t_stack *stk_b, long *samples);
+
+void	ft_100_plus_sorting(t_stack *stk_a, t_stack *stk_b);
+int		ft_is_chunk_pushed(t_stack *stk_a, t_stack *stk_b, int chk);
+void	ft_find_hold_position_down(t_stack *stk_a, t_decs *decs_tab, int chk);
+void	ft_find_hold_position_up(t_stack *stk_a, t_decs *decs_tab, int chk);
+void	ft_find_hold_positions(t_stack *stk_a, t_decs *decs_tab, int chk);
+void	ft_chunks_push(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int chk);
+
+void	ft_find_positions(t_stack *stk_a, t_decs *decs_tab, int val);
+void	ft_find_position_down(t_stack *stk_a, t_decs *decs_tab, int val);
+void	ft_find_position_up(t_stack *stk_a, t_decs *decs_tab, int val);
+void	ft_chunks_pull(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int val);
 
 #endif

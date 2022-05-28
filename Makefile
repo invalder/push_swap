@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/24 22:47:17 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/05/29 00:33:39 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS = push_swap.c \
 	push_swap_sort_opr1.c \
 	push_swap_sort_opr2.c \
 	push_swap_sort_opr3.c \
+	push_swap_sort_opr4.c \
+	push_swap_sort_opr5.c \
 	push_swap_input_sort_chk.c \
 	push_swap_input_sort_chk2.c \
 	push_swap_input_verify.c \
@@ -88,6 +90,8 @@ fclean: clean
 
 re: fclean all
 
+red: fclean debug
+
 test5: re
 	@./push_swap $(RNDS5)
 
@@ -103,10 +107,19 @@ testv10:
 test100: re
 	@./push_swap $(RNDS100)
 
+test100b:
+	@./push_swap $(RNDS100)
+
+test100d: red
+	@lldb ./push_swap_debug $(RNDS100)
+
 testv100:
 	@valgrind --leak-check=full ./push_swap $(RNDS100)
 
 test500: re
+	@./push_swap $(RNDS500)
+
+test500b:
 	@./push_swap $(RNDS500)
 
 testv500:

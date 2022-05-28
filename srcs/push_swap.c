@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/24 22:35:47 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/27 11:46:33 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 static int	ft_stk_init_splt(char **s_arr, t_stack *stk_a);
 static int	ft_stk_init_argv(int argc, char **argv, t_stack *stk_a);
 static void	ft_stk_creation_chk(t_stack *stk_a, t_stack *stk_b);
+static long	*ft_sorted_sample(int argc, char **argv);
 
 int	main(int argc, char **argv)
 {
 	int		isinputok;
+	long	*sample;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	isinputok = 0;
+	sample = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_stack_create();
@@ -36,7 +39,8 @@ int	main(int argc, char **argv)
 		isinputok = ft_stk_init_argv(argc, argv, stack_a);
 	if (isinputok)
 		ft_exit_stderr(stack_a, stack_b);
-	ft_sorting_opr(stack_a, stack_b);
+	sample = ft_sorted_sample(argc, argv);
+	ft_sorting_opr(stack_a, stack_b, sample);
 	ft_stacks_cleanup(stack_a, stack_b);
 }
 
@@ -84,4 +88,23 @@ static void	ft_stk_creation_chk(t_stack *stk_a, t_stack *stk_b)
 		ft_stacks_cleanup(stk_a, stk_b);
 		exit(1);
 	}
+}
+
+static long	*ft_sorted_sample(int argc, char **argv)
+{
+	char	**str_arr;
+	int		arr_len;
+	long	*samples;
+
+	if (argc == 2)
+	{
+		str_arr = ft_split(argv[1], ' ');
+		arr_len = ft_arr_range(str_arr);
+		samples = ft_radix_sort_main(str_arr);
+	}
+	else
+	{
+		samples = ft_radix_sort_main(argv + 1);
+	}
+	return samples;
 }
