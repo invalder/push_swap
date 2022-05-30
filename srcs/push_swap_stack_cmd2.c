@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:39:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/13 16:09:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 22:02:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_stack_rb(t_stack *stk_a, t_stack *stk_b, int iscalled)
 	{
 		ft_stack_rot(stk_b);
 		if (!iscalled)
-			ft_printf("ra\n");
+			ft_printf("rb\n");
 		return (0);
 	}
 	return (1);

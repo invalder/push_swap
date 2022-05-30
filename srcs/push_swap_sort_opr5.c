@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 17:55:15 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 03:07:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/05/29 22:19:49 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	ft_chunks_push(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int chk)
 	mid = (stk_a->max_chnks[chk] + stk_a->min_chnks[chk]) / 2;
 	if (decs->depth <= decs->height)
 	{
-		ft_stack_n_ra(stk_a, stk_b, decs->depth - 1);
+		if (stk_a->stack_cnt > 1)
+			decs->depth--;
+		ft_stack_n_ra(stk_a, stk_b, decs->depth);
 		ft_stack_pb(stk_a, stk_b);
 		if (stk_b->top->content <= mid)
 			ft_stack_rb(stk_a, stk_b, 0);
@@ -54,6 +56,7 @@ void	ft_find_position_down(t_stack *stk_b, t_decs *decs_tab, int val)
 	while (down)
 	{
 		decs_tab->depth++;
+		decs_tab->depth_min = down->content;
 		if (down->content == val)
 		{
 			decs_tab->depth_min = down->content;
@@ -71,6 +74,7 @@ void	ft_find_position_up(t_stack *stk_b, t_decs *decs_tab, int val)
 	while (up)
 	{
 		decs_tab->height++;
+		decs_tab->height_min = up->content;
 		if (up->content == val)
 		{
 			decs_tab->height_min = up->content;
@@ -98,4 +102,5 @@ void	ft_chunks_pull(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int val)
 			ft_stack_pa(stk_a, stk_b);
 		}
 	}
+	ft_reset_decs(decs);
 }
