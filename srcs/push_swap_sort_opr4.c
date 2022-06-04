@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:37:40 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 22:15:01 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:58:10 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,24 @@ void	ft_100_plus_sorting(t_stack *stk_a, t_stack *stk_b)
 	t_decs	decs_tab;
 
 	chk = 0;
-	// ft_stack_print_all(stk_a, stk_b);
 	while (ft_stack_issorted(stk_a, stk_b))
 	{
 		while (chk < stk_a->nchunks)
 		{
-			// ft_stack_print_all(stk_a, stk_b);
 			while (ft_is_chunk_pushed(stk_a, stk_b, chk))
 			{
 				ft_find_hold_positions(stk_a, &decs_tab, chk);
 				ft_chunks_push(stk_a, stk_b, &decs_tab, chk);
 			}
-			// usleep(1000000);
-			// ft_stack_print_all(stk_a, stk_b);
 			chk++;
 		}
 		chk = stk_a->max;
-		ft_stack_print_all(stk_a, stk_b);
-		break;
 		while (chk >= stk_a->min)
 		{
-			ft_stack_print_all(stk_a, stk_b);
 			ft_find_positions(stk_b, &decs_tab, chk);
-			ft_print_decs(&decs_tab);
 			ft_chunks_pull(stk_a, stk_b, &decs_tab, chk);
-			sleep(1);
-			ft_stack_print_all(stk_a, stk_b);
-			break ;
 			chk--;
 		}
-		ft_stack_print_all(stk_a, stk_b);
-		break ;
 	}
 }
 

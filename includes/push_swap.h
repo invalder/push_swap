@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 00:08:07 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:20:35 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		ft_stack_appendlast(t_stack *stk, int content);
 void	ft_stack_print_all(t_stack *stk_a, t_stack *stk_b);
 void	ft_stacks_cleanup(t_stack *stack_a, t_stack *stack_b);
 long	*ft_radix_sort_main(char **arr);
+long	*ft_quick_sort_main(char **arr);
 void	ft_print_samples(long *samples, int len);
 int		ft_check_inp_dup(char **arr);
 int		ft_mlc_chk(long *samples, long *new_sample, long *count);

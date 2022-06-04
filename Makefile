@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/05/29 10:53:12 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/06/03 19:20:16 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS = push_swap.c \
 	push_swap_sort_opr5.c \
 	push_swap_input_sort_chk.c \
 	push_swap_input_sort_chk2.c \
+	push_swap_input_sort_chk3.c \
 	push_swap_input_verify.c \
 	push_swap_err_msg.c
 

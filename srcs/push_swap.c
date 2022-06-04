@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 22:33:49 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:50:45 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	main(int argc, char **argv)
 	if (isinputok)
 		ft_exit_stderr(stack_a, stack_b);
 	sample = ft_sorted_sample(argc, argv);
-	ft_print_samples(sample, stack_a->stack_cnt);
 	ft_sorting_opr(stack_a, stack_b, sample);
-	// ft_stack_testing(stack_a, stack_b);
 	ft_stacks_cleanup(stack_a, stack_b);
 }
 
@@ -102,11 +100,9 @@ static long	*ft_sorted_sample(int argc, char **argv)
 	{
 		str_arr = ft_split(argv[1], ' ');
 		arr_len = ft_arr_range(str_arr);
-		samples = ft_radix_sort_main(str_arr);
+		samples = ft_quick_sort_main(str_arr);
 	}
 	else
-	{
-		samples = ft_radix_sort_main(argv + 1);
-	}
+		samples = ft_quick_sort_main(argv + 1);
 	return (samples);
 }

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 17:55:15 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 22:19:49 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:54:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@ void	ft_chunks_push(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int chk)
 		if (stk_a->stack_cnt > 1)
 			decs->depth--;
 		ft_stack_n_ra(stk_a, stk_b, decs->depth);
-		ft_stack_pb(stk_a, stk_b);
-		if (stk_b->top->content <= mid)
-			ft_stack_rb(stk_a, stk_b, 0);
-		else if (stk_b->top->prev
-			&& stk_b->top->content <= stk_b->top->prev->content)
-			ft_stack_sb(stk_a, stk_b, 0);
 	}
 	else
-	{
 		ft_stack_n_rra(stk_a, stk_b, decs->height);
-		ft_stack_pb(stk_a, stk_b);
-		if (stk_b->top->content <= mid)
+	ft_stack_pb(stk_a, stk_b);
+	if (stk_b->top->content <= mid)
+	{
+		ft_find_hold_positions(stk_a, decs, chk);
+		if (decs->depth <= decs->height && decs->depth > 1)
+			ft_stack_rr(stk_a, stk_b);
+		else
 			ft_stack_rb(stk_a, stk_b, 0);
-		else if (stk_b->top->prev
-			&& stk_b->top->content <= stk_b->top->prev->content)
-			ft_stack_sb(stk_a, stk_b, 0);
 	}
 }
 

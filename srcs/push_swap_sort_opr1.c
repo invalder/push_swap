@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:40:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 03:02:40 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:57:02 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	ft_sorting_opr(t_stack *stk_a, t_stack *stk_b, long *samples)
 	ft_stack_stats_all(stk_a, stk_b);
 	if (ft_stack_issorted(stk_a, stk_b))
 	{
-		if (stk_a->stack_cnt >= 3 && stk_a->stack_cnt <= 5)
+		if (stk_a->stack_cnt == 2)
+			while (ft_stack_issorted(stk_a, stk_b))
+				ft_stack_ra(stk_a, stk_b, 0);
+		else if (stk_a->stack_cnt >= 3 && stk_a->stack_cnt <= 5)
 		{
 			ft_stack_n_pb(stk_a, stk_b, stk_a->stack_cnt - 3);
 			while (ft_stack_issorted_single(stk_a, 0))
