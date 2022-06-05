@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 23:10:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/09 14:02:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/05 03:32:34 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_check_inp_dup(char **arr)
 
 	idx = 1;
 	arr_len = ft_arr_range(arr);
-	samples = ft_radix_sort_main(arr);
+	samples = ft_quick_sort_main(arr);
 	tmp = samples[0];
 	while (idx < arr_len)
 	{
