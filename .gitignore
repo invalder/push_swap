@@ -54,5 +54,6 @@ dkms.conf
 push_swap
 push_swap_debug
 checker
+checker.org
 
 test*.txt

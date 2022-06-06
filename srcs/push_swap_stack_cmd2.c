@@ -6,13 +6,13 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:39:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/29 22:02:59 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:19:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_pa(t_stack *stk_a, t_stack *stk_b)
+int	ft_stack_pa(t_stack *stk_a, t_stack *stk_b, int iscalled)
 {
 	t_node	*pop_node;
 
@@ -20,13 +20,14 @@ int	ft_stack_pa(t_stack *stk_a, t_stack *stk_b)
 	{
 		pop_node = ft_stack_pop(stk_b);
 		ft_stack_push_node(stk_a, pop_node);
-		ft_printf("pa\n");
+		if (!iscalled)
+			ft_printf("pa\n");
 		return (0);
 	}
 	return (1);
 }
 
-int	ft_stack_pb(t_stack *stk_a, t_stack *stk_b)
+int	ft_stack_pb(t_stack *stk_a, t_stack *stk_b, int iscalled)
 {
 	t_node	*pop_node;
 
@@ -34,7 +35,8 @@ int	ft_stack_pb(t_stack *stk_a, t_stack *stk_b)
 	{
 		pop_node = ft_stack_pop(stk_a);
 		ft_stack_push_node(stk_b, pop_node);
-		ft_printf("pb\n");
+		if (!iscalled)
+			ft_printf("pb\n");
 		return (0);
 	}
 	return (1);
@@ -66,14 +68,15 @@ int	ft_stack_rb(t_stack *stk_a, t_stack *stk_b, int iscalled)
 	return (1);
 }
 
-int	ft_stack_rr(t_stack *stk_a, t_stack *stk_b)
+int	ft_stack_rr(t_stack *stk_a, t_stack *stk_b, int iscalled)
 {
 	if (stk_a->top && stk_a->bottom && stk_a->stack_cnt > 1
 		&& stk_b->top && stk_b->bottom && stk_b->stack_cnt > 1)
 	{
 		ft_stack_ra(stk_a, stk_b, 1);
 		ft_stack_rb(stk_a, stk_b, 1);
-		ft_printf("rr\n");
+		if (!iscalled)
+			ft_printf("rr\n");
 		return (0);
 	}
 	return (1);

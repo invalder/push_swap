@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 17:55:15 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/05 03:20:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:23:08 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	ft_chunks_push(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int chk)
 	}
 	else
 		ft_stack_n_rra(stk_a, stk_b, decs->height);
-	ft_stack_pb(stk_a, stk_b);
+	ft_stack_pb(stk_a, stk_b, 0);
 	if (stk_b->top->content <= mid)
 	{
 		ft_find_hold_positions(stk_a, decs, chk);
 		if (decs->depth <= decs->height && decs->depth > 1)
-			ft_stack_rr(stk_a, stk_b);
+			ft_stack_rr(stk_a, stk_b, 0);
 		else
 			ft_stack_rb(stk_a, stk_b, 0);
 	}
@@ -86,7 +86,7 @@ void	ft_chunks_pull(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int val)
 		if (decs->depth_min == val)
 		{
 			ft_stack_n_rb(stk_a, stk_b, decs->depth - 1);
-			ft_stack_pa(stk_a, stk_b);
+			ft_stack_pa(stk_a, stk_b, 0);
 		}
 	}
 	else
@@ -94,7 +94,7 @@ void	ft_chunks_pull(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int val)
 		if (decs->height_min == val)
 		{
 			ft_stack_n_rrb(stk_a, stk_b, decs->height);
-			ft_stack_pa(stk_a, stk_b);
+			ft_stack_pa(stk_a, stk_b, 0);
 		}
 	}
 	ft_reset_decs(decs);

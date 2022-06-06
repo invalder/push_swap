@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:24:38 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/05/15 16:27:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:20:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_stack_n_rr(t_stack *stk_a, t_stack *stk_b, int n)
 	{
 		while (n > 0)
 		{
-			if (ft_stack_rr(stk_a, stk_b))
+			if (ft_stack_rr(stk_a, stk_b, 0))
 				ft_exit_stderr(stk_a, stk_b);
 			n--;
 		}
@@ -35,7 +35,7 @@ int	ft_stack_n_rrr(t_stack *stk_a, t_stack *stk_b, int n)
 	{
 		while (n > 0)
 		{
-			if (ft_stack_rrr(stk_a, stk_b))
+			if (ft_stack_rrr(stk_a, stk_b, 0))
 				ft_exit_stderr(stk_a, stk_b);
 			n--;
 		}

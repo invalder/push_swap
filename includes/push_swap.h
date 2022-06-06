@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/03 19:20:35 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:18:08 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	ft_exit_stderr(t_stack *stk_a, t_stack *stk_b);
 
 int		ft_stack_sa(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_sb(t_stack *stk_a, t_stack *stk_b, int iscalled);
-int		ft_stack_ss(t_stack *stk_a, t_stack *stk_b);
-int		ft_stack_pa(t_stack *stk_a, t_stack *stk_b);
-int		ft_stack_pb(t_stack *stk_a, t_stack *stk_b);
+int		ft_stack_ss(t_stack *stk_a, t_stack *stk_b, int iscalled);
+int		ft_stack_pa(t_stack *stk_a, t_stack *stk_b, int iscalled);
+int		ft_stack_pb(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_ra(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rb(t_stack *stk_a, t_stack *stk_b, int iscalled);
-int		ft_stack_rr(t_stack *stk_a, t_stack *stk_b);
+int		ft_stack_rr(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rra(t_stack *stk_a, t_stack *stk_b, int iscalled);
 int		ft_stack_rrb(t_stack *stk_a, t_stack *stk_b, int iscalled);
-int		ft_stack_rrr(t_stack *stk_a, t_stack *stk_b);
+int		ft_stack_rrr(t_stack *stk_a, t_stack *stk_b, int iscalled);
 
 void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b);
 

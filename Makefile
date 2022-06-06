@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/06/03 19:20:16 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/06/06 09:44:19 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,15 @@ RM = rm -rf
 
 SRC_DIR = srcs/
 OBJ_DIR = objs/
+OBJC_DIR = objcs/
 OBJD_DIR = objds/
 LIB_DIR = libft/
 
 INCS = -Iincludes/ -I$(LIB_DIR)includes/
 NAME = push_swap
 NAMED = push_swap_debug
+NAMEC = checker
+
 SRCS = push_swap.c \
 	push_swap_stack_cmd1.c \
 	push_swap_stack_cmd2.c \
@@ -46,7 +49,28 @@ SRCS = push_swap.c \
 	push_swap_input_verify.c \
 	push_swap_err_msg.c
 
+CKRS = checker.c \
+	push_swap_stack_cmd1.c \
+	push_swap_stack_cmd2.c \
+	push_swap_stack_cmd3.c \
+	push_swap_stack_cmd4.c \
+	push_swap_stack_cmd5.c \
+	push_swap_stack_cmd6.c \
+	push_swap_stack_cmd7.c \
+	push_swap_stack_utils1.c \
+	push_swap_stack_utils2.c \
+	push_swap_stack_utils3.c \
+	push_swap_stack_prints.c \
+	push_swap_stack_tester.c \
+	push_swap_input_sort_chk.c \
+	push_swap_input_sort_chk2.c \
+	push_swap_input_sort_chk3.c \
+	push_swap_input_verify.c \
+	push_swap_err_msg.c
+
 OBJS = $(SRCS:.c=.o)
+OBJC = $(CKRS:.c=.o)
+
 RNDS5 = `ruby -e "puts (1..5).to_a.shuffle.join(' ')";`
 RNDS10 = `ruby -e "puts (1..10).to_a.shuffle.join(' ')";`
 RNDS100 = `ruby -e "puts (1..100).to_a.shuffle.join(' ')";`
@@ -57,13 +81,19 @@ RNDSN10 = `ruby -e "puts (-5..4).to_a.shuffle.join(' ')";`
 RNDSN100 = `ruby -e "puts (-50..49).to_a.shuffle.join(' ')";`
 RNDSN500 = `ruby -e "puts (-250..249).to_a.shuffle.join(' ')";`
 
-all: $(NAME)
+all: $(NAME) $(NAMEC)
+
+check: $(NAMEC)
 
 debug: $(NAMED)
 
 $(NAME):	$(addprefix $(OBJ_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
 		@$(CC) $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) -o push_swap -L $(LIB_DIR) -lft
+
+$(NAMEC):	$(addprefix $(OBJC_DIR),$(OBJC))
+		@make -C $(LIB_DIR) --silent
+		@$(CC) $(CFLAGS) $(addprefix $(OBJC_DIR),$(OBJC)) -o checker -L $(LIB_DIR) -lft
 
 $(NAMED):	$(addprefix $(OBJD_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
@@ -77,16 +107,22 @@ $(OBJD_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJD_DIR)
 	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
 
+$(OBJC_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJC_DIR)
+	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
+
 bonus: $(NAME)
 
 clean:
 	@make -C $(LIB_DIR) clean --silent
 	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJC_DIR)
 	@$(RM) $(OBJD_DIR)
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean --silent
 	@$(RM) push_swap
+	@$(RM) checker
 	@$(RM) push_swap_debug
 
 re: fclean all
@@ -158,4 +194,4 @@ norm_h:
 
 norm_a:	norm_c norm_h
 
-.PHONY: all clean fclean re push_swap norm_c norm_h norm_a test100 test500 testv100 testv500
+.PHONY: all clean fclean re push_swap norm_c norm_h norm_a test100 test500 testv100 testv500 checker
