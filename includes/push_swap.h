@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/06 10:18:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:37:27 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,8 @@ int		ft_update_decs_up(t_decs *decs_tab, int key, int node);
 void	ft_reset_decs(t_decs *decs_tab);
 void	ft_print_decs(t_decs *decs_tab);
 
-void	ft_sorting_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab);
-
 void	ft_3_rand_nums(t_stack *stk_a, t_stack *stk_b);
 void	ft_5_rand_nums(t_stack *stk_a, t_stack *stk_b);
-void	ft_rand_nums(t_stack *stk_a, t_stack *stk_b);
 void	ft_5_rand_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab);
 
 void	ft_chunk_calculator(t_stack *stk_a, t_stack *stk_b, long *samples);

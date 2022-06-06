@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 01:17:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/06 10:21:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:07:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_opr_chk(char *buff, t_stack *stk_a, t_stack *stk_b, int len);
 static void	ft_opr_chk2(char *buff, t_stack *stk_a, t_stack *stk_b, int len);
+static void	ft_final_check(t_stack *stk_a, t_stack *stk_b);
 
 void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b)
 {
@@ -39,10 +40,7 @@ void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b)
 		ft_bzero(buff, sizeof(char) * 512);
 		free(buff);
 	}
-	if (!ft_stack_issorted(stk_a, stk_b))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
+	ft_final_check(stk_a, stk_b);
 }
 
 static void	ft_opr_chk(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
@@ -71,7 +69,6 @@ static void	ft_opr_chk(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
 		ft_stack_rrr(stk_a, stk_b, 1);
 	else
 		ft_opr_chk2(buff, stk_a, stk_b, len);
-	// ft_stack_print_all(stk_a, stk_b);
 }
 
 static void	ft_opr_chk2(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
@@ -100,4 +97,12 @@ static void	ft_opr_chk2(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
 		ft_stack_rrr(stk_a, stk_b, 1);
 	else
 		return ;
+}
+
+static void	ft_final_check(t_stack *stk_a, t_stack *stk_b)
+{
+	if (!ft_stack_issorted(stk_a, stk_b))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
