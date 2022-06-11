@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:08:49 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/06 15:54:48 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/12 00:58:23 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,26 @@ void	ft_5_rand_decision(t_stack *stk_a, t_stack *stk_b, t_decs *decs_tab)
 
 static void	ft_3_ra_decision(t_stack *stk_a, t_stack *stk_b)
 {
-	if (stk_b->top->content < stk_b->bottom->content)
-		ft_stack_rr(stk_a, stk_b, 0);
+	if (stk_b->stack_cnt)
+	{
+		if (stk_b->top->content < stk_b->bottom->content)
+			ft_stack_rr(stk_a, stk_b, 0);
+		else
+			ft_stack_ra(stk_a, stk_b, 0);
+	}
 	else
 		ft_stack_ra(stk_a, stk_b, 0);
 }
 
 static void	ft_3_rra_decision(t_stack *stk_a, t_stack *stk_b)
 {
-	if (stk_b->top->content < stk_b->bottom->content)
-		ft_stack_rrr(stk_a, stk_b, 0);
+	if (stk_b->stack_cnt)
+	{
+		if (stk_b->top->content < stk_b->bottom->content)
+			ft_stack_rrr(stk_a, stk_b, 0);
+		else
+			ft_stack_rra(stk_a, stk_b, 0);
+	}
 	else
 		ft_stack_rra(stk_a, stk_b, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:25:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/06 15:37:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/12 05:03:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,7 @@ void	ft_find_positions(t_stack *stk_a, t_decs *decs_tab, int val);
 void	ft_find_position_down(t_stack *stk_a, t_decs *decs_tab, int val);
 void	ft_find_position_up(t_stack *stk_a, t_decs *decs_tab, int val);
 void	ft_chunks_pull(t_stack *stk_a, t_stack *stk_b, t_decs *decs, int val);
+
+void	ft_find_min_push(t_stack *stk_a, t_stack *stk_b);
 
 #endif
