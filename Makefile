@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 00:06:36 by nnakarac          #+#    #+#              #
-#    Updated: 2022/06/12 05:04:28 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/06/12 10:46:27 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -195,4 +195,4 @@ norm_h:
 
 norm_a:	norm_c norm_h
 
-.PHONY: all clean fclean re push_swap norm_c norm_h norm_a test100 test500 testv100 testv500 checker
+.PHONY: all clean fclean re push_swap norm_c norm_h norm_a test100 test500 testv100 testv500 checker check

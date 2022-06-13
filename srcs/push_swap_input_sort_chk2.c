@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 23:10:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/05 03:32:34 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:00:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_check_inp_dup(char **arr)
 		tmp = samples[idx++];
 	}
 	free(samples);
+	if (tmp < (long)INT_MIN || tmp > (long)INT_MAX)
+		return (1);
 	return (0);
 }
 
