@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 22:46:58 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/13 17:45:45 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:11:32 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_chunk_calculator(t_stack *stk_a, t_stack *stk_b, long *samples)
 {
 	(void) stk_b;
 	if (stk_a->stack_cnt >= 500)
-		stk_a->nchunks = 11;
+		stk_a->nchunks = 8;
 	else if (stk_a->stack_cnt >= 100)
 		stk_a->nchunks = 5;
 	else

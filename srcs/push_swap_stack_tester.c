@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 01:17:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/06/13 17:27:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:12:51 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_opr_chk(char *buff, t_stack *stk_a, t_stack *stk_b, int len);
 static int	ft_opr_chk2(char *buff, t_stack *stk_a, t_stack *stk_b, int len);
+static int	ft_opr_chk3(char *buff, t_stack *stk_a, t_stack *stk_b, int len);
 static void	ft_final_check(t_stack *stk_a, t_stack *stk_b);
 
 void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b)
@@ -29,10 +30,8 @@ void	ft_stack_testing(t_stack *stk_a, t_stack *stk_b)
 		ft_bzero(buff, sizeof(char) * 512);
 		ptr = buff;
 		while (read(0, ptr, 1) > 0)
-		{
 			if (*ptr++ == '\n')
 				break ;
-		}
 		if (!*buff)
 			loop = 0;
 		if (ft_opr_chk(buff, stk_a, stk_b, ft_strlen(buff)) == -1)
@@ -98,6 +97,16 @@ static int	ft_opr_chk2(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
 		return (ft_stack_rrb(stk_a, stk_b, 1));
 	else if (!ft_strncmp(buff, "rrr", len) && len > 0)
 		return (ft_stack_rrr(stk_a, stk_b, 1));
+	else
+		return (ft_opr_chk3(buff, stk_a, stk_b, len));
+}
+
+static int	ft_opr_chk3(char *buff, t_stack *stk_a, t_stack *stk_b, int len)
+{
+	(void)stk_a;
+	(void)stk_b;
+	if (!ft_strncmp(buff, "", len) || len == 0)
+		return (0);
 	else
 		return (-1);
 }
